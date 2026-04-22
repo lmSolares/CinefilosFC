@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">CinefilosFC</string>
+    <string name="nav_option_home">Inicio</string>
+    <string name="nav_option_search">Buscar</string>
+    <string name="nav_option_profile">Perfil</string>
+    <string name="nav_option_settings">Ajustes</string>
+    <string name="cancel"><u>Cancelar</u></string>
+    <string name="actualizar"><u>Actualizar</u></string>
+    <string name="publish">Publicar</string>
+    <string name="write_review">Escribe tu reseña</string>
+    <string name="write_name">Escribe tu nombre</string>
+    <string name="username">Escribe tu username</string>
+    <string name="pais">Escribe tu pais</string>
+    <string name="sexo_masc">Masculino</string>
+    <string name="sexo_fem">Femenino</string>
+    <string name="otro">Otro</string>
+    <string name="selec_sexo">Selecciona tu sexo: </string>
+</resources>
