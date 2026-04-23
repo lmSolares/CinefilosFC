@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_all" android:title="Todo" />
+        <item android:id="@+id/nav_movies" android:title="Solo Películas" />
+        <item android:id="@+id/nav_series" android:title="Solo Series" />
+    </group>
+    <item android:title="Géneros">
+        <menu>
+            <item android:id="@+id/gen_horror" android:title="Terror" />
+            <item android:id="@+id/gen_romance" android:title="Romance" />
+            <item android:id="@+id/gen_action" android:title="Acción" />
+        </menu>
+    </item>
+</menu>

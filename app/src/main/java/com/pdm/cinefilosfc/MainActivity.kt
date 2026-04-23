@@ -1,80 +1,91 @@
 package com.pdm.cinefilosfc
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+
 import android.content.Intent
-import android.widget.ImageView
-import android.widget.TextView
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.squareup.picasso.Picasso
+import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var drawerLayout: DrawerLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.new_review)
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        val tvTitle = findViewById<TextView>(R.id.tv_movie_title)
-        val tvYear = findViewById<TextView>(R.id.tv_movie_year)
-        val tvGenre = findViewById<TextView>(R.id.tv_movie_genre)
-        val ivPoster = findViewById<ImageView>(R.id.iv_movie_poster)
+        setContentView(R.layout.activity_main)
 
-        tvTitle.text = "Cargando..."
-        tvYear.text = ""
-        tvGenre.text = ""
+        val toolbar = findViewById<MaterialToolbar>(R.id.topAppBar)
+        setSupportActionBar(toolbar)
 
-        lifecycleScope.launch(Dispatchers.IO) {
-            try {
-                val pelicula = RetrofitClient.api.searchShow("The Office")
+        drawerLayout = findViewById(R.id.drawer_layout)
+        val navigationView = findViewById<NavigationView>(R.id.navigation_view)
 
-                withContext(Dispatchers.Main) {
-                    if (pelicula != null) {
-                        tvTitle.text = pelicula.name
-
-                        val anio = pelicula.premiered?.take(4) ?: "Desconocido"
-                        tvYear.text = anio
-
-                        tvGenre.text = pelicula.genres?.joinToString(", ") ?: "Sin género"
-
-                        Picasso.get()
-                            .load(pelicula.image?.medium)
-                            .placeholder(android.R.drawable.ic_menu_gallery)
-                            .into(ivPoster)
-                    }
-                }
-            } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    tvTitle.text = e.message ?: "Error de conexión"
-                    e.printStackTrace()
-                }
-            }
-
+        toolbar.setNavigationOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
         }
+
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNav.selectedItemId = R.id.nav_home
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_home -> {
-                    true
-                }
-                R.id.nav_search -> {
-                    true
-                }
+                R.id.nav_home -> true
+                R.id.nav_search -> true
                 R.id.nav_profile -> {
-                    val intent = Intent(this, PerfilActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(this, PerfilActivity::class.java))
                     true
                 }
-                R.id.nav_settings -> {
-                    true
-                }
+                R.id.nav_settings -> true
                 else -> false
             }
         }
 
+        val rvMovies = findViewById<RecyclerView>(R.id.rv_movies)
+        rvMovies.layoutManager = GridLayoutManager(this, 2)
 
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val myApiKey = "ccdc150cc34be143bce60d00f3de897b"
 
+                val response = RetrofitClient.api.getPopularMovies(myApiKey)
+
+                withContext(Dispatchers.Main) {
+                    val adapter = MovieAdapter(response.results)
+                    rvMovies.adapter = adapter
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_app_bar, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                true
+            }
+            R.id.action_search -> {
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
 

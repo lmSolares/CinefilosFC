@@ -1,12 +1,18 @@
 package com.pdm.cinefilosfc.models
 
-data class Movie(
-    val name: String?,
-    val premiered: String?,
-    val genres: List<String>?,
-    val image: ImageUrl?
+import com.google.gson.annotations.SerializedName
+
+data class TmdbResponse(
+    val results: List<Movie>
 )
 
-data class ImageUrl(
-    val medium: String?
+data class Movie(
+    @SerializedName("title", alternate = ["name"])
+    val title: String?,
+
+    @SerializedName("release_date", alternate = ["first_air_date"])
+    val releaseDate: String?,
+
+    @SerializedName("poster_path")
+    val posterPath: String?
 )

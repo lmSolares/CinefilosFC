@@ -15,4 +15,5 @@
     <string name="sexo_fem">Femenino</string>
     <string name="otro">Otro</string>
     <string name="selec_sexo">Selecciona tu sexo: </string>
+    <string name="about">Acerca de</string>
 </resources>
