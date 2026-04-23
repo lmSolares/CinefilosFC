@@ -18,9 +18,6 @@ class PerfilActivity : AppCompatActivity() {
                     startActivity(intent)
                     true
                 }
-                R.id.nav_search -> {
-                    true
-                }
                 R.id.nav_profile -> {
                     true
                 }

@@ -23,6 +23,7 @@
             app:title="@string/app_name"
             android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
             app:titleTextColor="@color/accent"
+            app:popupTheme="@style/MenuPopupOscuro"
             app:navigationIcon="@drawable/ic_menu"
             app:navigationIconTint="@color/text"
             app:layout_constraintEnd_toEndOf="parent"
@@ -86,6 +87,7 @@
         android:background="@color/background1"
         app:itemTextColor="@color/text"
         app:itemIconTint="@color/text"
+        app:theme="@style/TemaMenuLateral"
         app:menu="@menu/drawer_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

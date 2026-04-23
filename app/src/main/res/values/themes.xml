@@ -2,4 +2,12 @@
 <resources>
 
     <style name="Theme.CinefilosFC" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="MenuPopupOscuro" parent="ThemeOverlay.MaterialComponents.Dark">
+        <item name="android:colorBackground">@color/background1</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="TemaMenuLateral">
+        <item name="android:textColorSecondary">@color/accent</item>
+    </style>
 </resources>
