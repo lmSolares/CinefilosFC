@@ -20,6 +20,20 @@ interface ApiService {
         @Query("language") language: String = "es-MX"
     ): TmdbResponse
 
+    @GET("3/tv/popular")
+    suspend fun getPopularTVShows(
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String = "es-MX"
+    ): TmdbResponse
+
+    // Para filtrar por géneros (Terror, Romance, Acción)
+    @GET("3/discover/movie")
+    suspend fun getMoviesByGenre(
+        @Query("api_key") apiKey: String,
+        @Query("with_genres") genreId: String,
+        @Query("language") language: String = "es-MX"
+    ): TmdbResponse
+
 }
 
 object RetrofitClient {

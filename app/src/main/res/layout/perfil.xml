@@ -87,14 +87,14 @@
         app:menu="@menu/bottom_nav_menu"
         />
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <ScrollView
+        android:id="@+id/scrollViewProfile"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
         android:background="@color/background2"
-
+        android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/nav_divider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -105,19 +105,18 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/image_perfil"
-                android:layout_width="90dp"
-                android:layout_height="130dp"
-                android:layout_marginTop="15dp"
-                android:background="#E0E0E0"
-                android:scaleType="centerCrop"
-                android:src="@android:drawable/ic_menu_gallery"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp"> <ImageView
+            android:id="@+id/image_perfil"
+            android:layout_width="90dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="15dp"
+            android:background="#E0E0E0"
+            android:scaleType="centerCrop"
+            android:src="@android:drawable/ic_menu_gallery"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/edit_username"
@@ -131,7 +130,7 @@
                 android:inputType="textMultiLine"
                 android:textColor="@color/text"
                 android:textColorHint="@color/text"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -148,10 +147,9 @@
                 android:hint="@string/write_name"
                 android:inputType="textMultiLine"
                 android:padding="16dp"
-                android:paddingTop="120dp"
                 android:textColor="@color/text"
                 android:textColorHint="@color/text"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edit_username" />
@@ -167,10 +165,9 @@
                 android:hint="@string/pais"
                 android:inputType="textMultiLine"
                 android:padding="16dp"
-                android:paddingTop="120dp"
                 android:textColor="@color/text"
                 android:textColorHint="@color/text"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edit_name" />
@@ -179,7 +176,7 @@
                 android:id="@+id/sexo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/selec_sexo"
                 android:textColor="@color/text"
                 android:textSize="20sp"
@@ -213,8 +210,7 @@
                     android:checked="false"
                     android:text="@string/sexo_masc"
                     android:textColor="@color/text"
-                    android:textSize="14sp"
-                    tools:layout_editor_absoluteY="445dp" />
+                    android:textSize="14sp" />
 
                 <RadioButton
                     android:id="@+id/otro"
@@ -224,12 +220,11 @@
                     android:checked="false"
                     android:text="@string/otro"
                     android:textColor="@color/text"
-                    android:textSize="14sp"
-                    tools:layout_editor_absoluteY="445dp" />
+                    android:textSize="14sp" />
             </RadioGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </FrameLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

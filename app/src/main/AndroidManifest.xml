@@ -23,6 +23,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".PerfilActivity" />
+        <activity
+            android:name=".NewReviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

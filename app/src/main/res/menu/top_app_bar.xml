@@ -15,4 +15,14 @@
         android:id="@+id/action_about"
         android:title="@string/about"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_share"
+        android:title="Compartir Aplicación"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_support"
+        android:title="Contactar Soporte"
+        app:showAsAction="never" />
 </menu>

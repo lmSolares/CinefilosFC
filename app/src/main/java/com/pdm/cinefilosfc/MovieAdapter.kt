@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pdm.cinefilosfc.models.Movie
 import com.squareup.picasso.Picasso
 
-class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(
+    private val movies: List<Movie>,
+    private val onItemClick: (Movie) -> Unit
+) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ivPoster: ImageView = view.findViewById(R.id.iv_item_poster)
@@ -30,7 +33,13 @@ class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<Movie
             Picasso.get()
                 .load(imageUrl)
                 .placeholder(android.R.drawable.ic_menu_gallery)
+                .fit()
+                .centerCrop()
                 .into(holder.ivPoster)
+        }
+
+        holder.itemView.setOnClickListener {
+            onItemClick(movie)
         }
     }
 
