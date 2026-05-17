@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
-            val myApiKey = "ccdc150cc34be143bce60d00f3de897b"
+            val myApiKey = BuildConfig.API_KEY
 
             lifecycleScope.launch(Dispatchers.IO) {
                 try {
@@ -84,10 +84,9 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val myApiKey = "ccdc150cc34be143bce60d00f3de897b"
+                val myApiKey = BuildConfig.API_KEY
 
                 val response = RetrofitClient.api.getPopularMovies(myApiKey)
-
 
                 withContext(Dispatchers.Main) {
                     configurarAdaptador(response.results)
@@ -122,7 +121,8 @@ class MainActivity : AppCompatActivity() {
     private fun ejecutarBusqueda(query: String) {
         lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val myApiKey = "ccdc150cc34be143bce60d00f3de897b"
+                val myApiKey = BuildConfig.API_KEY
+
                 val response = RetrofitClient.api.searchMulti(query, myApiKey)
                 withContext(Dispatchers.Main) {
                     val rvMovies = findViewById<RecyclerView>(R.id.rv_movies)
@@ -174,8 +174,6 @@ class MainActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-
-
     }
 
     private fun configurarAdaptador(movies: List<Movie>) {
@@ -187,7 +185,4 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 }
-
-
