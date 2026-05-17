@@ -1,2 +1,2 @@
-# CinefilosFC
-App de reseña de peliculas/series.
+Herrera Avalos Julio Alejandro
+Solares Ramos Luis Mario
