@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background2"
+    android:padding="32dp">
+
+    <ImageView
+        android:id="@+id/logo_login"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="60dp"
+        android:src="@android:drawable/ic_media_play"
+        app:tint="@color/accent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/app_name"
+        android:textColor="@color/accent"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo_login" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:hint="@string/username"
+        android:textColorHint="@color/accent"
+        app:cursorColor="@color/accent"
+        app:hintTextColor="@color/accent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_login"
+        tools:layout_editor_absoluteX="32dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_login_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofilledHighlight="@android:color/transparent"
+            android:background="@drawable/bg_curved_edge"
+            android:importantForAutofill="no"
+            android:singleLine="true"
+            android:textColor="@color/text"
+            android:textColorHighlight="@color/accent"
+            android:textColorHint="@color/accent"
+            android:textColorLink="@color/accent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Contraseña"
+        app:hintTextColor="@color/accent"
+        android:textColorHint="@color/accent"
+        app:passwordToggleEnabled="true"
+        app:layout_constraintTop_toBottomOf="@id/input_layout_username">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_login_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofilledHighlight="@android:color/transparent"
+            android:background="@drawable/bg_curved_edge"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textColor="@color/text"
+            android:textColorHighlight="@color/accent"
+            android:textColorHint="@color/accent"
+            android:theme="@style/Theme.CinefilosFC"
+            app:hintTextColor="@color/accent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_login_enter"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/accent"
+        android:text="Iniciar Sesión"
+        android:textColor="@color/background1"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/input_layout_password" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
