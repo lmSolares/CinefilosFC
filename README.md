@@ -62,7 +62,3 @@ La aplicación cuenta con un flujo completo y estructurado, a continuación se d
 * Acceda a la pantalla de Ajustes desde el menú de opciones de la barra superior de la app.
 * Encontrará el botón destacado en color rojo **"Cerrar Sesión"**.
 * Al pulsarlo, la aplicación utiliza un Intent configurado con las banderas `Intent.FLAG_ACTIVITY_NEW_TASK` o `Intent.FLAG_ACTIVITY_CLEAR_TASK`. Esto elimina todo el historial de pantallas acumuladas en la memoria para que el usuario regrese al Login inicial.
-
----
-* **Carga de Imágenes:** Picasso para el almacenamiento en caché y renderizado inteligente de pósters desde URLs externas.
-* **Flujos de Navegación:** Combinación robusta de `Intents` explícitos, paso de parámetros extras (`putExtra`), gestión avanzada del stack de actividades mediante banderas sintácticas y arquitecturas UI basadas en `ConstraintLayout`, `RecyclerView` y Material Design components.
