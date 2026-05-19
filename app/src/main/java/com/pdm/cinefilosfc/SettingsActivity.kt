@@ -2,39 +2,29 @@ package com.pdm.cinefilosfc
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class SettingsActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings)
 
-        val btnCancel = findViewById<TextView>(R.id.btn_cancel)
-        btnCancel.setOnClickListener {
+        val btnBack = findViewById<TextView>(R.id.btn_back_settings)
+        val btnLogout = findViewById<Button>(R.id.btn_logout)
+
+        btnBack.setOnClickListener {
             finish()
         }
 
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-
-        bottomNav.selectedItemId = R.id.settings
-
-        bottomNav.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_home -> {
-                    val intent = Intent(this, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                    startActivity(intent)
-                    true
-                }
-                R.id.nav_profile -> {
-                    val intent = Intent(this, PerfilActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                else -> false
+        btnLogout.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }
+            startActivity(intent)
+            finish()
         }
     }
 }

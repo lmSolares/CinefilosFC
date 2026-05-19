@@ -22,15 +22,17 @@ import kotlinx.coroutines.withContext
 class MainActivity : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
+    private var currentUser: String = "admin"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        currentUser = intent.getStringExtra("LOGGED_IN_USERNAME") ?: "admin"
 
         val toolbar = findViewById<MaterialToolbar>(R.id.topAppBar)
         setSupportActionBar(toolbar)
 
-        drawerLayout = findViewById(R.id.drawer_layout)
+        drawerLayout = findViewById(R.id.main_home)
         val navigationView = findViewById<NavigationView>(R.id.navigation_view)
 
         toolbar.setNavigationOnClickListener {
@@ -66,7 +68,15 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.nav_home -> true
                 R.id.nav_profile -> {
-                    startActivity(Intent(this, PerfilActivity::class.java))
+                    val intent = Intent(this, PerfilActivity::class.java)
+                    intent.putExtra("LOGGED_IN_USERNAME", currentUser)
+                    startActivity(intent)
+                    true
+                }
+                R.id.nav_mis_resenas -> {
+                    val intent = Intent(this, MyReviewsActivity::class.java)
+                    intent.putExtra("LOGGED_IN_USERNAME", currentUser)
+                    startActivity(intent)
                     true
                 }
                 else -> false
@@ -178,11 +188,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun configurarAdaptador(movies: List<Movie>) {
         val rvMovies = findViewById<RecyclerView>(R.id.rv_movies)
-        rvMovies.adapter = MovieAdapter(movies) { movieSeleccionada ->
-            val intent = Intent(this, NewReviewActivity::class.java)
-            intent.putExtra("MOVIE_TITLE", movieSeleccionada.title)
-            intent.putExtra("MOVIE_POSTER", movieSeleccionada.posterPath)
+        val adapter = MovieAdapter(movies) { movie ->
+            val intent = Intent(this, NewReviewActivity::class.java).apply {
+                putExtra("MOVIE_TITLE", movie.title)
+                putExtra("MOVIE_POSTER", movie.posterPath)
+                putExtra("LOGGED_IN_USERNAME", currentUser)
+            }
             startActivity(intent)
         }
+        rvMovies.adapter = adapter
     }
 }
